@@ -17,5 +17,5 @@ return:
 	mov al, [rdi + rcx]
 	mov bl, [rsi + rcx]
 	sub al, bl
-	movsx rax, al ; extends al to the size of rax ?? not really
+	movsx rax, al ; extends the sign to the higher bits of the register to fit
 	ret

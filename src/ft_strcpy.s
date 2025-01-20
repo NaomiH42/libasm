@@ -17,6 +17,6 @@ while:
 
 return:
 	mov bl, [rsi + rcx]
-	mov [rdi + rcx], bl	
+	mov [rdi + rcx], bl
 	mov rax, rdi
 	ret

@@ -17,15 +17,18 @@ OBJ = $(OBJ_S) $(OBJ_C)
 
 MAIN = $(SRC_D)/main.c
 
-CC = cc
+CC = cc -g
 AS = nasm -felf64
 
-TARGET = main
+TARGET = libasm.a
 
 all: $(TARGET)
 
-$(TARGET): $(OBJ)
+test: $(OBJ_C) $(TARGET) 
 	$(CC) $^ -o $@
+
+$(TARGET): $(OBJ_S)
+	ar rc $@ $^
 
 $(OBJ_D)/%.o: $(SRC_D)/%.s | $(OBJ_D)
 	$(AS) $< -o $@
@@ -43,5 +46,6 @@ clean:
 
 fclean: clean
 	rm -f $(TARGET)
+	rm -f test
 
 .PHONY: all clean fclean re

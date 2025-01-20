@@ -7,6 +7,10 @@ ft_read:
 	syscall
 	cmp rax, 0
 	jl error
+	mov r15, rax
+	call __errno_location
+	mov byte[rax], 0
+	mov rax, r15
 	ret
 
 error:

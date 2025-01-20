@@ -11,11 +11,16 @@ ft_strdup:
 	mov rdi, rax
 	inc rdi
 	call malloc
+	; mov rax, 0
 	cmp rax, 0
 	je error
 	mov rdi, rax
 	mov rsi, r15
 	call ft_strcpy
+	mov r14, rax
+	call __errno_location
+	mov byte[rax], 0
+	mov rax, r14
 	ret
 
 error:
