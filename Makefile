@@ -36,10 +36,12 @@ $(OBJ_D)/%.o: $(SRC_D)/%.c | $(OBJ_D)
 $(OBJ_D):
 	mkdir -p $(OBJ_D)
 
+re: fclean all
+
 clean:
 	rm -rf $(OBJ_D)
 
 fclean: clean
 	rm -f $(TARGET)
 
-.PHONY: all clean
+.PHONY: all clean fclean re
