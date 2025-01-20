@@ -7,7 +7,6 @@ ft_read:
 	syscall
 	cmp rax, 0
 	jl error
-	mov r15, rax
 	ret
 
 error:

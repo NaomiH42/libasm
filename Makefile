@@ -25,7 +25,7 @@ TARGET = libasm.a
 all: $(TARGET)
 
 test: $(OBJ_C) $(TARGET) 
-	$(CC) $^ -o $@
+	$(CC) $(OBJ_C) -L. -lasm -o $@
 
 $(TARGET): $(OBJ_S)
 	ar rc $@ $^
