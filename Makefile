@@ -4,7 +4,9 @@ OBJ_D = obj
 SRC_A = 	$(SRC_D)/ft_strlen.s \
 		$(SRC_D)/ft_strcpy.s \
 		$(SRC_D)/ft_strcmp.s \
-		$(SRC_D)/ft_write.s
+		$(SRC_D)/ft_write.s \
+		$(SRC_D)/ft_read.s \
+		$(SRC_D)/ft_strdup.s
 
 SRC_C = $(SRC_D)/main.c
 
