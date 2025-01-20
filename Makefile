@@ -1,12 +1,19 @@
-SRC_F = src
-OBJ_F = obj
+SRC_D = src
+OBJ_D = obj
 
-SRC = 	$(SRC_F)/ft_strlen.s \
-		$(SRC_F)/ft_strcpy.s
+SRC_A = 	$(SRC_D)/ft_strlen.s \
+		$(SRC_D)/ft_strcpy.s \
+		$(SRC_D)/ft_strcmp.s \
+		$(SRC_D)/ft_write.s
 
-OBJ = $(patsubst $(SRC_F)/%.s, $(OBJ_F)/%.o, $(SRC))
+SRC_C = $(SRC_D)/main.c
 
-MAIN = $(SRC_F)/main.c
+OBJ_S = $(patsubst $(SRC_D)/%.s, $(OBJ_D)/%.o, $(SRC_A))
+OBJ_C = $(patsubst $(SRC_D)/%.c, $(OBJ_D)/%.o, $(SRC_C))
+
+OBJ = $(OBJ_S) $(OBJ_C)
+
+MAIN = $(SRC_D)/main.c
 
 CC = cc
 AS = nasm -felf64
@@ -16,16 +23,19 @@ TARGET = main
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(MAIN) $^ -o $@
+	$(CC) $^ -o $@
 
-$(OBJ_F)/%.o: $(SRC_F)/%.s | $(OBJ_F)
+$(OBJ_D)/%.o: $(SRC_D)/%.s | $(OBJ_D)
 	$(AS) $< -o $@
 
-$(OBJ_F):
-	mkdir -p $(OBJ_F)
+$(OBJ_D)/%.o: $(SRC_D)/%.c | $(OBJ_D)
+	$(CC) $< -c -o $@
+
+$(OBJ_D):
+	mkdir -p $(OBJ_D)
 
 clean:
-	rm -rf $(OBJ_F)
+	rm -rf $(OBJ_D)
 
 fclean: clean
 	rm -f $(TARGET)

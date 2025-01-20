@@ -1,6 +1,6 @@
 global ft_strcpy
 
-EXTERN ft_strlen
+extern ft_strlen
 
 section .text
 
