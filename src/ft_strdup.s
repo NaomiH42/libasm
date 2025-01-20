@@ -17,10 +17,6 @@ ft_strdup:
 	mov rdi, rax
 	mov rsi, r15
 	call ft_strcpy
-	mov r14, rax
-	call __errno_location
-	mov byte[rax], 0
-	mov rax, r14
 	ret
 
 error:
